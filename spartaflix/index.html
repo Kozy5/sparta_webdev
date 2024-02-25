@@ -68,6 +68,8 @@
         let gumaInfo = { 'name': 'guma', 'age': 30, 'height': 55 }
         let name = gumaInfo['name'];
         let age = gumaInfo['age'];
+        let dogsAge = [age, 13, 20, 21, 7, 3];
+
 
 
 
@@ -82,6 +84,14 @@
         } else {
             console.log('성견입니다')
         }
+
+        dogsAge.forEach(a => {
+            if (a < 20) {
+                console.log('강아지입니다')
+            } else {
+                console.log('성견입니다')
+            }
+        });
 
 
     </script>
