@@ -7,27 +7,20 @@
 </head>
 <script>
     function checkResult() {
-        let fruits = ['사과', '배', '멜론', '귤', '수박'];
         let people = [
-            { 'name': 'Ham', 'age': 3 },
-            { 'name': 'Torim', 'age': 2 },
-            { 'name': 'Mozzi', 'age': 2 },
-            { 'name': 'Mozil', 'age': 3 },
-            { 'name': 'Guma', 'age': 4 },
-            { 'name': 'Kong', 'age': 1 }
-        ];
-        $('#q1').empty();
+            { 'name': '서영', 'height': 165 },
+            { 'name': '현아', 'height': 170 },
+            { 'name': '영환', 'height': 175 },
+            { 'name': '서연', 'height': 162 },
+            { 'name': '지용', 'height': 190 },
+            { 'name': '예지', 'height': 168 }
+        ]
         $('#q2').empty();
 
-        fruits.forEach(a => {
-            let fruits_html = ` <p>${a}</p> `;
-            $('#q1').append(fruits_html);
-        });
-
-
-
         people.forEach(a => {
-            let people_html = `<p>${a['name']}은(는)${a['age']}살입니다.</p>`;
+            let name = a['name'];
+            let height = a['height'];
+            let people_html = `<p>${name}의 키는 ${height}cm 입니다.</p>`;
             $('#q2').append(people_html);
         })
 
