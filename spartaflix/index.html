@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스파르타플릭스</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <style>
@@ -62,46 +63,9 @@
         }
     </style>
     <script>
-        let fruit = ['사과', '배', '수박'];
-        let helloToDog = '구마야 안녕 ';
-        let dogSound = '왈왈'
-        let gumaInfo = { 'name': 'guma', 'age': 30, 'height': 55 }
-        let name = gumaInfo['name'];
-        let age = gumaInfo['age'];
-        let dogsAge = [age, 13, 20, 21, 7, 3];
         function hey() {
-            alert('제목이 붉게 물든다');
+            $('#title').text('쥬라기월드');
         }
-        function changeColorTitle() {
-            document.getElementById('title').style.color = 'red';
-        }
-
-
-
-
-        console.log(helloToDog);
-        console.log(dogSound);
-        console.log(helloToDog + dogSound);
-        console.log(fruit[1]);
-        console.log(name, age)
-
-        if (age < 20) {
-            console.log('강아지입니다')
-        } else {
-            console.log('성견입니다')
-        }
-
-        dogsAge.forEach(a => {
-            if (a < 20) {
-                console.log('강아지입니다')
-            } else {
-                console.log('성견입니다')
-            }
-        });
-
-
-
-
     </script>
 </head>
 
