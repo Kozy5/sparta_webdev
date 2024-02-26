@@ -63,34 +63,33 @@
         }
     </style>
     <script>
-        function postingboxonoff() {
+        function openclose() {
             $('#postingbox').toggle();
-
         }
 
         function moviememory() {
+
             let image = $('#image').val();
             let title = $('#title').val();
             let star = $('#star').val();
-            let reason = $('#reason').val();
+            let comment = $('#comment').val();
 
-            let card_html = ` 
-            <div class="col">
+            let card_html = `<div class="col">
                 <div class="card h-100">
                     <img src="${image}"
                         class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">${title}</h5>
                         <p class="card-text">${star}</p>
-                        <p class="card-text">${reason}</p>
+                        <p class="card-text">${comment}</p>
                     </div>
 
                 </div>
-            </div>`;
+            </div>`
+            $('#card').toggle();
             $('#card').append(card_html);
+            alert('영화가 기록되었습니다.');
         }
-
-
     </script>
 </head>
 
@@ -130,7 +129,7 @@
                 <h1 class="display-5 fw-bold">킹덤</h1>
                 <p class="col-md-8 fs-4">병든 왕을 둘러싸고 흉흉한 소문이 떠돈다. 어둠에 뒤덮인 조선, 기이한 역병에 신음하는 산하. 정체 모를 악에 맞서 백성을 구원할 희망은 오직
                     세자뿐이다.</p>
-                <button type="button" onclick="postingboxonoff()" class="btn btn-outline-light">영화 기록하기</button>
+                <button onclick="openclose()" type="button" class="btn btn-outline-light">영화 기록하기</button>
                 <button type="button" class="btn btn-outline-light">상세정보</button>
 
             </div>
@@ -157,62 +156,13 @@
             </select>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="reason" placeholder="추천 이유">
+            <input type="email" class="form-control" id="comment" placeholder="추천 이유">
             <label for="floatingInput">추천 이유</label>
         </div>
         <button onclick="moviememory()" type="button" class="btn btn-danger">기록하기</button>
     </div>
     <div class="mycards">
-        <div id="card" class="row row-cols-1 row-cols-md-4 g-4">
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">영화 제목</h5>
-                        <p class="card-text">⭐⭐⭐</p>
-                        <p class="card-text">영화 코멘트</p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">영화 제목</h5>
-                        <p class="card-text">⭐⭐⭐</p>
-                        <p class="card-text">영화 코멘트</p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">영화 제목</h5>
-                        <p class="card-text">⭐⭐⭐</p>
-                        <p class="card-text">영화 코멘트</p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">영화 제목</h5>
-                        <p class="card-text">⭐⭐⭐</p>
-                        <p class="card-text">영화 코멘트</p>
-                    </div>
-
-                </div>
-            </div>
-
+        <div id="card" class="row row-cols-1 row-cols-md-4 g-4" style="display:none">
         </div>
 
     </div>
