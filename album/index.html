@@ -99,6 +99,8 @@
         'date': date
       };
       await addDoc(collection(db, "콜렉션이름"), doc);
+      alert('추억을 저장했습니다');
+      window.location.reload();
 
     })
 
@@ -109,9 +111,9 @@
         $('#msg').text(gu_mise)
       })
     })
-    function openclose() {
+    $('#savebtn').click(async function () {
       $('#postingbox').toggle();
-    }
+    })
     function makeCard() {
       let image = $('#image').val();
       let title = $('#title').val();
@@ -142,7 +144,7 @@
   <div class="mytitle">
     <h1>나만의 추억앨범</h1>
     <p>현재 서울의 미세먼지 : <span id="msg">좋음</span></p>
-    <button onclick="openclose()">추억 저장하기</button>
+    <button id="savebtn">추억 저장하기</button>
 
   </div>
   <div class="mypostingbox" id="postingbox">
