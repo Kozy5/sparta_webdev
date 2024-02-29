@@ -98,27 +98,27 @@
         'content': content,
         'date': date
       };
-      await addDoc(collection(db, "콜렉션이름"), doc);
+      await addDoc(collection(db, "albums"), doc);
       alert('추억을 저장했습니다');
       window.location.reload();
 
     })
 
-    $(document).ready(function () {
-      let url = 'http://spartacodingclub.shop/sparta_api/seoulair';
-      fetch(url).then(res => res.json()).then(data => {
-        let gu_mise = data['RealtimeCityAir']['row'][0]['IDEX_NM'];
-        $('#msg').text(gu_mise)
-      })
+    let url = 'http://spartacodingclub.shop/sparta_api/seoulair';
+    fetch(url).then(res => res.json()).then(data => {
+      let gu_mise = data['RealtimeCityAir']['row'][0]['IDEX_NM'];
+      $('#msg').text(gu_mise)
     })
-    $('#savebtn').click(async function () {
-      $('#postingbox').toggle();
-    })
-    function makeCard() {
-      let image = $('#image').val();
-      let title = $('#title').val();
-      let content = $('#content').val();
-      let date = $('#date').val();
+
+    let docs = await getDocs(collection(db, "albums"));
+    docs.forEach((doc) => {
+      let row = doc.data();
+      console.log(row);
+
+      let image = row['image'];
+      let title = row['title'];
+      let content = row['content'];
+      let date = row['date'];
 
       let temp_html = `
         <div class="col">
@@ -136,7 +136,12 @@
         </div>
       </div>`;
       $('#card').append(temp_html);
-    }
+    });
+
+
+    $('#savebtn').click(async function () {
+      $('#postingbox').toggle();
+    })
   </script>
 </head>
 
