@@ -63,6 +63,18 @@
         }
     </style>
     <script>
+        $(document).ready(function () {
+            let url = 'http://spartacodingclub.shop/sparta_api/weather/seoul';
+            fetch(url).then(res => res.json()).then(data => {
+                let temp = data['temp']
+
+                if (temp > 20) {
+                    $('#msg').text('더워요')
+                } else {
+                    $('#msg').text('추워요')
+                }
+            })
+        })
         function openclose() {
             $('#postingbox').toggle();
         }
@@ -109,6 +121,7 @@
                     <li><a href="#" class="nav-link px-2 text-white">Series</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">Movie</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">My list</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">현재기온 : <span id="msg"></span></a></li>
                 </ul>
 
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
