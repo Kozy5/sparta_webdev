@@ -61,6 +61,15 @@
             width: 100%;
 
         }
+
+        .card-body>button {
+            width: 100%;
+            height: 6%;
+            position: absolute;
+            bottom: 0%;
+            left: 0%;
+            font-size: 100%;
+        }
     </style>
     <script type="module">
 
@@ -103,6 +112,10 @@
             $('#postingbox').toggle();
         })
 
+        $('#carddelbtn').click(async function () {
+            alert('연결');
+        })
+
 
 
 
@@ -134,12 +147,14 @@
                         <h5 class="card-title">${title}</h5>
                         <p class="card-text">${star}</p>
                         <p class="card-text">${comment}</p>
+                        <button id="carddelbtn" type="button" class="btn btn-outline-dark">삭제하기</button>
                     </div>
     
                 </div>
             </div>`
             $('#card').append(card_html);
         })
+
     </script>
 </head>
 
