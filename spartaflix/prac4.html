@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #input {
+            width: 450px;
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        function hello() {
+            let image = document.getElementById('inputGroupFile02').value;
+            let html = `<image> src="${image}"> </image>`;
+            document.getElementById('imagediv').append(html);
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div id="input" class="input-group mb-3">
+        <input type="file" class="form-control" id="inputGroupFile02">
+        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+        <button onclick="hello()"> 버튼</button>
+    </div>
+    <div id="imagediv">
+
+    </div>
+</body>
+
+</html>
