@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function openClose() {
+            let mdiv = document.getElementById('mydiv');
+            if (mdiv.style.display = 'none') {
+                mdiv.style.display = 'block';
+            } else {
+                mdiv.style.display = 'none'
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <button onclick="openClose()" id="btn">버튼</button>
+    <div id="mydiv" style="display:none">
+        <h1>접거나 폅니다</h1>
+    </div>
+</body>
+
+</html>
