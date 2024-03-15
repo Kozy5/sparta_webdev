@@ -2,6 +2,71 @@
 /* 주석을
 여러줄로 
 달아볼까요 */
+유용한 함수정리
+var list = arrayListOf(1,2,3,4,5)
+컬렉션.count() = return count items total number
+ex) list.count() = 5
+컬렉션.sum() = return items sum_total
+ex) list.sum() = return 15
+컬렉션.contains(element:E) = return boolean (item포함 true or false)
+ex) list.contains(1) = return true
+컬렉션.get(index:Int) = return index 위치에 item명
+ex)list.get(0) = return 1
+컬렉션.indexOf(element:E) = return item의 index값
+ex)list.indexOf(1) = return 0
+컬렉션.isEmpty() = return boolean
+ex)list.isEmpty() = return false
+컬렉션.subList(fromIndex:Int,toIndex:Int) = return from item ~ to item
+ex)list.subList(0,3) = 1,2,3  // (form은 포함,to는 미포함)
+컬렉션.max()
+컬렉션.min()
+컬렉션.minus()
+컬렉션.plus()
+컬렉션.sorted()
+컬렉션.sortedBy{it}
+컬렉션.shuffled()
+컬렉션.drop()
+컬렉션.dropLast()
+컬렉션.filter()
+컬렉션.filterNot()
+컬렉션.find
+컬렉션.findLast()
+컬렉션.first()
+컬렉션.last()
+컬렉션.take()
+컬렉션.forEach{}
+컬렉션.forEachIndexed{}
+컬렉션.map{}
+컬렉션.mapIndexed{}
+
+확장기능
+var list2 = arrayListOf("Fe", "Fine")
+
+# 시작 글자 startsWith / 끝 글자 endsWith 응용 2가지
+
+1. all = 모든 item에 조건 부합여부
+컬렉션.all {it.startsWith("?")} = return boolean 
+ex) list2.all {it.startsWith("F")} = true
+ex) list2.all {it.endsWith("e")} = true
+
+2. any = 하나 이상 item에 부합여부
+컬렉션.any {it.startsWith("?")} = return boolean 
+ex) list2.any {it.startsWith("F")} = true
+ex) list2.any {it.endsWith("e")} = true
+
+컬렉션.asReversed() = return 리스트 역순
+ex) list2.asReversed() = [Fine,Fe]
+컬렉션.containseAll(listOf("Fe","Fine")) = return boolean 컬렉션 속 모든 요소 유무
+ex) list2.containsAll(listOf("Fe","Fine")) = true
+
+메서드 MutableCollection
+
+컬렉션.add()
+컬렉션.clear()
+컬렉션.remove()
+컬렉션.removeAll()
+컬렉션.retainAll()
+
 
 # 기본 주의사항
 fun main(){
