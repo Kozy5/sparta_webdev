@@ -2,7 +2,27 @@
 /* 주석을
 여러줄로 
 달아볼까요 */
+리스트 기본기 
+# 변수명만으로 리스트 전체 반환 가능
+arrayListOf
+mutableList
+listOf
+var list = ?(1,2,3,4,5)
+println(list) = [1,2,3,4,5]
+
+[리스트 명(? 검색필요) 지정 하면서 리스트 반환 하는 방법]
+a:$변수명
+
+var list = listOf(1,2,3,4,5)
+
+println("a:$list") = 1,2,3,4,5
+
+
+
 유용한 함수정리
+mutableList에서만 가능한
+
+immutableList
 var list = arrayListOf(1,2,3,4,5)
 컬렉션.count() = return count items total number
 ex) list.count() = 5
@@ -16,35 +36,59 @@ ex)list.get(0) = return 1
 ex)list.indexOf(1) = return 0
 컬렉션.isEmpty() = return boolean
 ex)list.isEmpty() = return false
-컬렉션.subList(fromIndex:Int,toIndex:Int) = return from item ~ to item
+컬렉션.subList(fromIndex:Int,toIndex:Int) = return from item ~ to item list계열에서 사용가능
 ex)list.subList(0,3) = 1,2,3  // (form은 포함,to는 미포함)
-컬렉션.drop()
-컬렉션.dropLast()
-컬렉션.max()
-컬렉션.min()
-컬렉션.first()
-컬렉션.last()
-컬렉션.minus()
-컬렉션.plus()
-컬렉션.sorted()
-컬렉션.shuffled()
-컬렉션.take()
-컬렉션.add()
-컬렉션.clear()
-컬렉션.remove()
-컬렉션.removeAll()
-컬렉션.retainAll()
+컬렉션.max() = 값이 가장 큰 항목을 반환/항목이 없다면 null 반환
+ex)list.max() = 5
+컬렉션.min() = 값이 가장 작은 항목을 반환/항목이 없다면 null 반환
+ex)list.min() = 1 
+컬렉션.first() = 첫번째 항목을 반환
+ex)list.first() = 1
+컬렉션.last() = 마지막 항목을 반환
+list.last() = 5
+컬렉션.minus(element:T) = 지정된 항목이 제외된 리스트를 반환/remove() 메서드와 달리
+새로운 리스트를 만들어 반환하는것에 유의.항목 대신 배열, 컬렉션, 범위 등이 들어 갈 수 있음 
+ex)list.minus(1) = 2,3,4,5 
+컬렉션.plus(element:T) 정된 항목이 제외된 리스트를 반환/add() 메서드와 달리
+새로운 리스트를 만들어 반환하는것에 유의.항목 대신 배열, 컬렉션, 범위 등이 들어 갈 수 있음 
+ex)list.plus(6) = 1,2,3,4,5,6
+컬렉션.sort() = 데이터 오름차순 정렬 / mutableList에 사용
+ex) var mutableListOf = mutableListOf(7,4,9,1,2)
+mutableListOf.sort()
+println(mutableListOf)
+print(list) = 1,2,3,4,5
+컬렉션.sorted() = 데이터 오름차순 정렬(Comparable 인터페이스에 구현된 순서대로)
+ sort()와 달리 새로운 리스트를 만들어 반환 
+ex)list.sorted() = 1,2,3,4,5 
+컬렉션.reverse() = 리스트 역순 정렬 / mutableList에 사용함 
+ex)list.reverse() = 5,4,3,2,1
+컬렉션.reversed() = 리스트 역순 정렬
+reverse()와 달리 새로운 리스트를 만들어 반환 
+ex)list.reversed() = 5,4,3,2,1 
+컬렉션.shuffle() = 리스트 순서 랜덤 셔플 / mutableList에 사용
+ex)list.shuffle() = shuffle list
+컬렉션.shuffled() = 리스트 순서 랜덤 셔플/ shuffle()과 달리 새로운 리스트를 반환
+ex)list.shuffled() = shuffle list 
+컬렉션.drop(n:Int) = 처음n개의 항목을 제외한 리스트 반환 
+ex)list.drop(1) = 2,3,4,5
+컬렉션.dropLast(n:Int) = 마지막 n개의 항목을 제외한 리스트 반환
+ex)list.dropLast(1) = 1,2,3,4 
+컬렉션.take(n:Int) = 첫 항목부터n개의 항목을 반환
+ex)list.take(2) = 1,2
+컬렉션.takeLast(n:Int) = 마지막 항목부터n개의 항목을 반환
+ex)list.takeLast(2) = 4,5
+컬렉션.clear() = 모든 항목을 제거 / / mutableList에서 사용
+ex)list.clear() = [] 
+컬렉션.add(element:E) = 리스트에 항목을 추가 / mutableList에서 사용
+ex)list.add(6) = 1,2,3,4,5,6 
+컬렉션.remove(element:E) = 하나의 항목을 제거 / mutableList에서 사용
+ex)list.remove(5) = 1,2,3,4
+컬렉션.removeAll(element:Collection) = 지정된 컬렉션 항목들 제거 / mutableList에서 사용
+ex)list.removeAll(listOf(1,2,3,)) = 4,5
+컬렉션.retainAll(element:Collction) = 지정된 컬렉션 항목만 남김 / mutableList에서 사용
+ex)list.retainAll(listOf(1,2,3)) = 1,2,3
 
 
-컬렉션.sortedBy{it}
-컬렉션.filter()
-컬렉션.filterNot()
-컬렉션.find
-컬렉션.findLast()
-컬렉션.forEach{}
-컬렉션.forEachIndexed{}
-컬렉션.map{}
-컬렉션.mapIndexed{}
 
 확장기능
 var list2 = arrayListOf("Fe", "Fine")
@@ -65,14 +109,21 @@ ex) list2.any {it.endsWith("e")} = true
 ex) list2.asReversed() = [Fine,Fe]
 컬렉션.containseAll(listOf("Fe","Fine")) = return boolean 컬렉션 속 모든 요소 유무
 ex) list2.containsAll(listOf("Fe","Fine")) = true
+컬렉션.sortedBy{it}
+컬렉션.filter()
+컬렉션.filterNot()
+컬렉션.find
+컬렉션.findLast()
+컬렉션.forEach{}
+컬렉션.forEachIndexed{}
+컬렉션.map{}
+컬렉션.mapIndexed{}
 
 메서드 MutableCollection
 
-컬렉션.add()
-컬렉션.clear()
-컬렉션.remove()
-컬렉션.removeAll()
-컬렉션.retainAll()
+
+
+
 
 
 # 기본 주의사항
