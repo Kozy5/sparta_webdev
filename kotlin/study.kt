@@ -18,22 +18,29 @@ ex)list.indexOf(1) = return 0
 ex)list.isEmpty() = return false
 컬렉션.subList(fromIndex:Int,toIndex:Int) = return from item ~ to item
 ex)list.subList(0,3) = 1,2,3  // (form은 포함,to는 미포함)
+컬렉션.drop()
+컬렉션.dropLast()
 컬렉션.max()
 컬렉션.min()
+컬렉션.first()
+컬렉션.last()
 컬렉션.minus()
 컬렉션.plus()
 컬렉션.sorted()
-컬렉션.sortedBy{it}
 컬렉션.shuffled()
-컬렉션.drop()
-컬렉션.dropLast()
+컬렉션.take()
+컬렉션.add()
+컬렉션.clear()
+컬렉션.remove()
+컬렉션.removeAll()
+컬렉션.retainAll()
+
+
+컬렉션.sortedBy{it}
 컬렉션.filter()
 컬렉션.filterNot()
 컬렉션.find
 컬렉션.findLast()
-컬렉션.first()
-컬렉션.last()
-컬렉션.take()
 컬렉션.forEach{}
 컬렉션.forEachIndexed{}
 컬렉션.map{}
