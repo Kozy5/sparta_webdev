@@ -17,6 +17,16 @@ var list = listOf(1,2,3,4,5)
 
 println("a:$list") = 1,2,3,4,5
 
+about forEach{}
+# Int형태에서는 사용이 안됨 toString()
+# 리스트 형태에서는 각 항목별로 적용
+# 문자형 일 때에는 각 글자별 적용
+# 명시적으로 i 변수에 값을 지정하는 방법
+var list = listOf(1,2,3)
+list.forEach{i -> 
+    println(i)
+}
+# 암묵적인 방법 사용 시 it 키워드로 주체의 값 표현
 
 
 유용한 함수정리
@@ -77,17 +87,6 @@ ex)list.dropLast(1) = 1,2,3,4
 ex)list.take(2) = 1,2
 컬렉션.takeLast(n:Int) = 마지막 항목부터n개의 항목을 반환
 ex)list.takeLast(2) = 4,5
-컬렉션.clear() = 모든 항목을 제거 / / mutableList에서 사용
-ex)list.clear() = [] 
-컬렉션.add(element:E) = 리스트에 항목을 추가 / mutableList에서 사용
-ex)list.add(6) = 1,2,3,4,5,6 
-컬렉션.remove(element:E) = 하나의 항목을 제거 / mutableList에서 사용
-ex)list.remove(5) = 1,2,3,4
-컬렉션.removeAll(element:Collection) = 지정된 컬렉션 항목들 제거 / mutableList에서 사용
-ex)list.removeAll(listOf(1,2,3,)) = 4,5
-컬렉션.retainAll(element:Collction) = 지정된 컬렉션 항목만 남김 / mutableList에서 사용
-ex)list.retainAll(listOf(1,2,3)) = 1,2,3
-
 
 
 확장기능
@@ -109,18 +108,38 @@ ex) list2.any {it.endsWith("e")} = true
 ex) list2.asReversed() = [Fine,Fe]
 컬렉션.containseAll(listOf("Fe","Fine")) = return boolean 컬렉션 속 모든 요소 유무
 ex) list2.containsAll(listOf("Fe","Fine")) = true
-컬렉션.sortedBy{it}
-컬렉션.filter()
-컬렉션.filterNot()
-컬렉션.find
-컬렉션.findLast()
-컬렉션.forEach{}
-컬렉션.forEachIndexed{}
-컬렉션.map{}
-컬렉션.mapIndexed{}
+컬렉션.sortedBy{it} = 지정한 람다 식에 의한 정렬된 리스트 반환/새로운 리스트 반환
+컬렉션.filter{predicate:(T)} = return 지정된 조건과 일치하는 리스트
+ex)list2.filter{it.startsWith("F")} = [Fe,Fine] 
+컬렉션.filterNot() = return 지정된 조건과 일치하지 않는 리스트
+ex)list2.filter{it.startsWith("Z")} = [Fe,Fine]
+컬렉션.find{predicate:(T)} = return 지정된 조건과 일치하는 첫번째 항목/없으면 null
+ex)list2.find{it.startsWith("F")} = Fe
+컬렉션.findLast{predicate:(T)} = return 지정된 조건과 일치하는 마지막 항목 / 없으면 null
+ex)list2.findLast{it.startsWith("F")} = Fine
+컬렉션.forEach{action:T} = 각 항목에 대해 지정된 작업 수행
+ex)list2.forEach{print("$it ")} = Fe Fine
+컬렉션.forEachIndexed{action:(index:Int,T)} = 각 항목에 순차적으로 인덱스를 제공하며, 지정된 작업을 수행
+[how use forEachIndexed]
+컬렉션.forEachIndexed{index,item -> action}
+ex)list2.forEachIndexed{i,any -> print("$any(${i+1}) ")} = Fe(1) Fine(2)
+컬렉션.map{transform:(T)->(R)} = return 모든 항목에 지정된 변환 함수가 적용된 리스트 
+ex)list2.map{it + "!"} = [Fe!, Fine!]
+컬렉션.mapIndexed{transform:(index,i)} = return 인덱스와 함께 지정된 변환 함수가 지정된 리스트
+ex)list2.mapIndexed{i,any -> any+"(${i+1})!"} = [Fe(1)!,Fine(2)!]
+
 
 메서드 MutableCollection
-
+컬렉션.clear() = 모든 항목을 제거 / / mutableList에서 사용
+ex)list.clear() = [] 
+컬렉션.add(element:E) = 리스트에 항목을 추가 / mutableList에서 사용
+ex)list.add(6) = 1,2,3,4,5,6 
+컬렉션.remove(element:E) = 하나의 항목을 제거 / mutableList에서 사용
+ex)list.remove(5) = 1,2,3,4
+컬렉션.removeAll(element:Collection) = 지정된 컬렉션 항목들 제거 / mutableList에서 사용
+ex)list.removeAll(listOf(1,2,3,)) = 4,5
+컬렉션.retainAll(element:Collction) = 지정된 컬렉션 항목만 남김 / mutableList에서 사용
+ex)list.retainAll(listOf(1,2,3)) = 1,2,3
 
 
 
