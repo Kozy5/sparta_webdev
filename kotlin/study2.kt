@@ -197,6 +197,8 @@ val money = 1000
 println("${money}\$를획득하였습니다") 
 출력 : 1000$를획득하였습니다
 
+
+
 4. 조건식
 4-1 if문 / 파라미터에 대해 이럴때 이것 아니면 이것의 느낌이 더 강함
 [예시1] 정석 if문 함수
@@ -228,9 +230,35 @@ fun checkNumber(score:Int):Int{
     else -> return 0
 }
 
+5. Array and List
 
+fun array(){
+    val array = arrayOf(1,2,3)
+    val list = listOf(1,2,3)
 
+    val array2 = arrayOf
+}
 
+240325 별도 일기
+var list = Array<Int>(3){i -> i} 여기서 i는 인덱스 값(배열 크기만큼의)
+
+-> 0 1 2
+
+var list = Array<Int>(3){i -> i+i} 여기서 i는 인덱스 값(배열 크기만큼의)
+-> 0 2 4
+
+var a = 1
+var b = 2
+var c = 3
+var list = Array<Int>(3){i -> i+a+b+c} 여기서 i는 인덱스 값(배열 크기만큼의)
+
+-> 6 7 8
+
+var a = 1
+var b = 2
+var c = 3
+var list = Array<Int>(3){i -> a+b+c} 여기서 i는 인덱스 값(배열 크기만큼의)
+-> 6 6 6
 
 
 
