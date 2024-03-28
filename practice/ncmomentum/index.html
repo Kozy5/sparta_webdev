@@ -10,11 +10,12 @@
 </head>
 
 <body>
-    <div id="login-form">
-        <input type="text" placeholder="What is your name?" />
+    <h1 class="hidden"></h1>
+    <button id="initialbutton">닉네임 초기화</button>
+    <form id="login-form">
+        <input required minlength="4" maxlength="14" type="text" placeholder="3글자 초과 15글자 미만" />
         <button>Log In</button>
-
-    </div>
+    </form>
 
     <script src="app.js"></script>
 </body>
