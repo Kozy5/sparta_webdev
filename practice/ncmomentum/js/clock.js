@@ -1,15 +1,13 @@
 const clock = document.querySelector("#clock-box h1")
 
-function timetime(){
+function handleClock(){
     const date = new Date();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
-    
-    clock.innerText = `${hours}`.padStart(2,"0")+":"+`${minutes}`.padStart(2,"0")+":"+ `${seconds}`.padStart(2,"0");
+    const hours = String(date.getHours()).padStart(2,"0");
+    const minutes = String(date.getMinutes()).padStart(2,"0");
+    const seconds = String(date.getSeconds()).padStart(2,"0");
+    clock.innerText = `${hours}:${minutes}:${seconds}`;
 }
 
-timetime()
-setInterval(timetime,1000)
+setInterval(handleClock,1000)
 
 
