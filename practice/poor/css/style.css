@@ -25,6 +25,13 @@ body {
 }
 #partner-box {
   width: 200px;
+  margin-left : 5px;
+}
+.addparteners{
+  background-color : black;
+  border: 1px solid white;
+  text-align: center;
+  color : yellow;
 }
 #user-info {
   display: flex;
