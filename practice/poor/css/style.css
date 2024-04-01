@@ -1,8 +1,14 @@
-body {
-  background-color: beige;
+*{
+  font-family: "Cute Font", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 .hidden {
   display: none;
+}
+#money-box{
+  display:flex;
+  flex-direction:row;
 }
 #top {
   display: flex;
@@ -19,19 +25,20 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-image: url("https://cdn.pixabay.com/photo/2022/02/15/06/53/band-7014366_640.jpg");
-  background-size: cover;
-  background-position: center;
+  background-image:url("https://cdn.vox-cdn.com/thumbor/1Sbn_9PaLk9nrxUt4AmSoqR8W9w=/0x0:5118x3412/1200x800/filters:focal(1879x588:2697x1406)/cdn.vox-cdn.com/uploads/chorus_image/image/72566788/1488635619.0.jpg");
+  background-size:cover;
+  background-position:center;
+  
 }
 #partner-box {
   width: 200px;
   margin-left : 5px;
 }
 .addparteners{
-  background-color : black;
-  border: 1px solid white;
+  background-color : white;
+  border: 1px solid gold;
   text-align: center;
-  color : yellow;
+  color : blue;
 }
 #user-info {
   display: flex;
@@ -49,12 +56,21 @@ body {
   border: 1px solid white;
   background-color: black;
 }
+.user-info-image{
+  width: 360px;
+  height: 360px;
+}
 #right-box {
   width: 50%;
 }
 #main-button {
   width: 100%;
   height: 500px;
+  color:white;
+  font-size : 100px;
+  background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA2MDZfMTMx%2FMDAxNjIyOTg3NDU1NzQ4.1D2Ve4DmCW3ZG7b1wVUIZZ67McCwcrab8vHcSkgNnvMg.0Zd3KX72TJVBlsbi6kcwStIfgMMDVnVBUjmlcUy2Iocg.JPEG.winniesphere%2F5f425e4c828547d989cdd5f73729f982.jpg&type=sc960_832");
+  background-size : cover;
+  background-position : center;
 }
 #store-sign {
   display: flex;
