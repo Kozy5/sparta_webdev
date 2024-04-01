@@ -1,6 +1,6 @@
 var peerage = document.querySelector("#peerage");
 
 function peerageChange() {
-  peerage.innerText = "공작";
+  peerage.innerText = "첼자르";
 }
 peerageChange();
