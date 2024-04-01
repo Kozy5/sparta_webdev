@@ -5,7 +5,7 @@ const money = document.querySelector("#money-box h5");
 const partnerbox = document.querySelector("#partner-box");
 setInterval(gugul, 1000);
 var moneyauto = 1;
-var moneycliced = 100;
+var moneycliced = 1;
 var moneyDefault = 0;
 var intervalValue = 1000;
 
@@ -20,15 +20,17 @@ function directGugul() {
 }
 function buyPowerUpAuto(event) {
   event.preventDefault();
-  var gumaemoney = parseInt(event.target.innerHTML);
+  var gumaemoney = parseInt(event.target.id);
   var chodang = parseInt(event.target.parentElement.id);
   var partenername = event.target.parentElement.parentElement.firstElementChild.innerHTML;
-  let temp = `<h4 class="addparteners">${partenername}</h4>`;
   if (moneyDefault >= gumaemoney) {
     moneyDefault -= gumaemoney;
     money.innerText = moneyDefault;
     moneyauto = chodang;
-    partnerbox.append(temp);
+    var temp = document.createElement("h4")
+    temp.innerHTML = partenername
+    temp.classList.add("addparteners")
+    partnerbox.append(temp)
     event.target.parentElement.parentElement.classList.add("hidden");
   } else {
     alert("돈이 부족하네요");
@@ -37,7 +39,7 @@ function buyPowerUpAuto(event) {
 
 function buyPowerUpClick(event) {
   event.preventDefault();
-  var gumaemoney = parseInt(event.target.innerHTML);
+  var gumaemoney = parseInt(event.target.id);
   var powervalue = parseInt(event.target.parentElement.id);
   if (moneyDefault >= gumaemoney) {
     moneyDefault -= gumaemoney;
