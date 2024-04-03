@@ -103,3 +103,9 @@
 #store-detail-list > div > div > button {
   width: 100%;
 }
+.danger-message{
+  position:relative;
+  z-index : 2;
+  text-align: center;
+  font-size:50px;
+}
