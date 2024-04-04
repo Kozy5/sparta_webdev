@@ -4,11 +4,13 @@ const plusmenubtn = document.querySelectorAll(".powerup-button");
 const money = document.querySelector("#money-box h5");
 const partnerbox = document.querySelector("#partner-box");
 const dangermsg = document.querySelector(".danger-message");
+var peerage = document.querySelector("#peerage");
+
 
 setInterval(begging, 1000);
 
 var moneyauto = 1;
-var moneycliced = 1;
+var moneycliced = 100;
 var moneyDefault = 0;
 var intervalValue = 1000;
 
@@ -69,3 +71,27 @@ hragentbtn.forEach.call(hragentbtn, function (col) {
 plusmenubtn.forEach.call(plusmenubtn, function (col) {
   col.addEventListener("click", plusMenu);
 });
+
+function peerageChange(Changepeerage) {
+  peerage.innerText = Changepeerage;
+}
+function peerageChangefun(){
+  if(money.innerText >= 0 && money.innerText < 999){
+    peerageChange("첼자르");
+  }else if(money.innerText > 1000 && money.innerText < 4999){
+    peerageChange("주급 도둑");
+  }else if(money.innerText > 5000 && money.innerText < 9999){
+    peerageChange("햄버거먹다 5000억");
+  }else if(money.innerText > 10000 && money.innerText < 50000){
+    peerageChange("햄버거먹고 조를 벌어본");
+  }else{
+    peerageChange("황제");
+  }
+}
+
+
+setInterval(peerageChangefun,1000);
+
+
+
+
