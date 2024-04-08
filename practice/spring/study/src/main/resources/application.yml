@@ -1,0 +1,30 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      force: true
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://{host}[:{port}]/[{database}]
+    username: root
+    password: 1234
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+        highlight_sql: true
+logging:
+  pattern:
+    console: "[%d{HH:mm:ss.SSS}][%logger.%method:%line] -%msg%n"
+  level:
+    org:
+      hibernate:
+        type.descriptor.sql: trace
+        SQL: debug
