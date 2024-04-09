@@ -1,0 +1,30 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      force: true
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/
+    username: root
+    password: 1234
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+        highlight: true
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: DEBUG
+REST_API_KEY: "92a44ede1e6a2b57697fed55af745bb4"
