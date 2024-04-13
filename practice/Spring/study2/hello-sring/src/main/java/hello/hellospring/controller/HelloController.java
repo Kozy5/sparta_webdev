@@ -1,4 +1,4 @@
-package hello.hellosring.controller;
+package hello.hellospring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,22 +27,21 @@ public class HelloController {
         return "안녕" + name;
     }
 
-    public Hello helloApi(@RequestParam("name") String name){
+    @GetMapping("hello-api")
+    @ResponseBody
+    public Hello helloapi(@RequestParam("name") String name){
         Hello hello = new Hello();
-        hello.setName(name);
+        hello.setNimo(name);
         return hello;
-
     }
+    class Hello{
+                private String nimo;
 
-    static class Hello{
-        private String name;
-
-        public String getName(){
-            return name;
-        }
-
-        public void setName(String name){
-            this.name = name;
+                public String getNimo(){
+                    return nimo;
+                }
+                public void setNimo(String argu){
+                    this.nimo = argu;
         }
     }
 

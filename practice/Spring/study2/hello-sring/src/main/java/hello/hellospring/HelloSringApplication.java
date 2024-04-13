@@ -1,4 +1,4 @@
-package hello.hellosring;
+package hello.hellospring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
