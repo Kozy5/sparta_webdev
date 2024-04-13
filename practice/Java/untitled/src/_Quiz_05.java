@@ -9,7 +9,7 @@ public class _Quiz_05 {
             up+=5;
             System.out.println("사이즈"+shooseList[i]+"(재고 있음)");
         }
-
-
     }
+
 }
+
