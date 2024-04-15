@@ -1,0 +1,15 @@
+body {
+    height:1000px;
+}
+.top {
+    height:33%;
+    background-color:greenyellow;
+}
+.middle {
+    height:33%;;
+    background-color:chartreuse;
+}
+.bottom {
+    height:33%;
+    background-color:green;
+}
