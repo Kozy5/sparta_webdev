@@ -1,15 +1,14 @@
-body {
-    height:1000px;
+html,body {
+    height:100%;
 }
-.top {
-    height:33%;
-    background-color:greenyellow;
+body{
+    background-color:#181A1B !important;
 }
-.middle {
-    height:33%;;
-    background-color:chartreuse;
-}
-.bottom {
-    height:33%;
-    background-color:green;
+*{
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight:bolder;
+    font-style: normal;
+    color:#C5C0B8;
+
 }
