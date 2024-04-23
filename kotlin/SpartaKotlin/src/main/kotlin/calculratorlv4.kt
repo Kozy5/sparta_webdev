@@ -1,11 +1,15 @@
 package org.example
 
 fun main(args: Array<String>) {
-    var calc = AbstractOperation(10,"+",5)
+    var calc = Calculator4(10,5)
     calc.AddOperation()
+    calc.SubstractOperation()
+    calc.MultiplyOperation()
+    calc.DivideOperation()
+    calc.RemainderOperation()
 
 }
-abstract class Calculator4(num1:Int,operator:String,num3:Int) {
+abstract class AbstractOperation(num1:Int,num3:Int) {
 
     abstract fun AddOperation()
     abstract fun SubstractOperation()
@@ -14,10 +18,10 @@ abstract class Calculator4(num1:Int,operator:String,num3:Int) {
     abstract fun RemainderOperation()
 }
 
-class AbstractOperation(num1:Int,operator:String,num2:Int): Calculator4(num1,operator,num2) {
+class Calculator4(num1:Int,num2:Int): AbstractOperation(num1,num2) {
     var num1 = num1
     var num2 = num2
-    var operation = operator
+
     override fun AddOperation() {
         println(num1+num2)
     }
