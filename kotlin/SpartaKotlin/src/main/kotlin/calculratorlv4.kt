@@ -2,17 +2,21 @@ package org.example
 
 fun main(args: Array<String>) {
 
+
     while(start() == "Y"){
+
         println("연산할 첫번째 숫자를 입력해주세요")
         val firstNumber = readLine()!!.toInt()
         println("연산할 두번째 숫자를 입력해주세요")
         val secondNumber = readLine()!!.toInt()
+
 
         val calc = Calculator4(firstNumber,secondNumber)
 
         printCalculationGuideMessage()
 
         val selectCalculationMethod = readLine()!!
+
         when(selectCalculationMethod){
             "1" -> calc.AddOperation()
             "2" -> calc.SubstractOperation()
@@ -21,9 +25,12 @@ fun main(args: Array<String>) {
             "5" -> calc.RemainderOperation()
             else ->reInputRequest()
         }
+
     }
 
+
 }
+
 fun start():String{
     println("-----------------------------------")
     println("-------------계산 방법---------------")
@@ -38,9 +45,6 @@ fun start():String{
         "1" -> return "Y"
         else -> return "N"
     }
-}
-fun printWelcomeMessage(){
-
 }
 fun printCalculationGuideMessage(){
     println("연산 방법을 골라주세요")
