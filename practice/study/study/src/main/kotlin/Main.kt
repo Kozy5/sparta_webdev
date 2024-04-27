@@ -1,5 +1,14 @@
 package org.example
 
 fun main() {
-    println("world")
+
+}
+abstract class Animal(var name:String, var age:Int, var type:String){
+    init{
+        println("Animal Class")
+    }
+}
+
+class Dog():Animal(){
+
 }
