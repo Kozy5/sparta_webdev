@@ -1,7 +1,8 @@
 package com.teamsparta.courseregistration.domain.courseapplication.controller
 
-import com.teamsparta.courseregistration.domain.courseapplication.dto.ApplicationResponse
-import com.teamsparta.courseregistration.domain.courseapplication.dto.ApplyLecture
+import com.teamsparta.courseregistration.domain.courseapplication.dto.CourseApplicationResponse
+import com.teamsparta.courseregistration.domain.courseapplication.dto.ApplyCourseRequest
+import com.teamsparta.courseregistration.domain.courseapplication.dto.UpdateApplicationStatusRequest
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -9,20 +10,24 @@ import org.springframework.web.bind.annotation.*
 @RestController
 class ApplicationController {
 
-    @PostMapping
-    fun applyLecture(@RequestBody applyLecture: ApplyLecture):ResponseEntity<ApplicationResponse>{
-        TODO()
-    }
     @GetMapping
-    fun getApplicationList(@RequestBody applicationResponse: ApplicationResponse): ResponseEntity<ApplicationResponse>{
+    fun getApplicationList(@PathVariable courseId:Long): ResponseEntity<List<CourseApplicationResponse>>{
         TODO()
     }
     @GetMapping("/{applicationsId}")
-    fun getApplication(@PathVariable applicationsId:Long,@RequestBody applicationResponse:ApplicationResponse):ResponseEntity<ApplicationResponse>{
+    fun getApplication(@PathVariable courseId:Long,@PathVariable applicationsId:Long):ResponseEntity<CourseApplicationResponse>{
         TODO()
     }
+
+    @PostMapping
+    fun applyCourse(@PathVariable courseId:Long, @RequestBody applyCourseRequest: ApplyCourseRequest):ResponseEntity<List<CourseApplicationResponse>>{
+
+        TODO()
+    }
+
+
     @PatchMapping("/{applicationsId}")
-    fun updateApplication(@PathVariable applicationsId:Long,@RequestBody applicationResponse:ApplicationResponse):ResponseEntity<ApplicationResponse>{
+    fun updateApplicationStatus(@PathVariable courseId:Long,@PathVariable applicationsId:Long,@RequestBody updateApplicationStatusRequest: UpdateApplicationStatusRequest):ResponseEntity<CourseApplicationResponse>{
         TODO()
     }
 

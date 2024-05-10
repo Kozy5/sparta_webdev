@@ -1,33 +1,33 @@
 package com.teamsparta.courseregistration.domain.lecture.controller
 
-import com.teamsparta.courseregistration.domain.lecture.dto.CreateLectureRequest
+import com.teamsparta.courseregistration.domain.lecture.dto.AddLectureRequest
 import com.teamsparta.courseregistration.domain.lecture.dto.LectureResponse
 import com.teamsparta.courseregistration.domain.lecture.dto.UpdateLectureRequest
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-@RequestMapping("/courses/{coursesId}/lectures")
+@RequestMapping("/courses/{courseId}/lectures")
 @RestController
 class LectureController {
 
     @GetMapping
-    fun getLectureList(@RequestBody lectureResponse:LectureResponse): ResponseEntity<LectureResponse>{
+    fun getLectureList(@PathVariable courseId:Long): ResponseEntity<List<LectureResponse>>{
         TODO()
     }
-    @GetMapping("/{lecturesId}")
-    fun getLecture(@PathVariable lectureId:Long,@RequestBody lectureResponse:LectureResponse):ResponseEntity<LectureResponse>{
+    @GetMapping("/{lectureId}")
+    fun getLecture(@PathVariable courseId:Long, @PathVariable lectureId:Long):ResponseEntity<LectureResponse>{
         TODO()
     }
     @PostMapping
-    fun createLecture(@RequestBody createLectureRequest: CreateLectureRequest):ResponseEntity<LectureResponse>{
+    fun addLecture(@PathVariable courseId:Long,@RequestBody addLectureRequest: AddLectureRequest):ResponseEntity<LectureResponse>{
         TODO()
     }
     @PutMapping("/{lectureId}")
-    fun updateLecture(@PathVariable lectureId:Long,@RequestBody updateLectureRequest: UpdateLectureRequest):ResponseEntity<LectureResponse>{
+    fun updateLecture(@PathVariable courseId:Long,@PathVariable lectureId:Long,@RequestBody updateLectureRequest: UpdateLectureRequest):ResponseEntity<LectureResponse>{
         TODO()
     }
     @DeleteMapping("/{lectureId}")
-    fun deleteLecture(@PathVariable lectureId:Long,@RequestBody lectureResponse:LectureResponse):ResponseEntity<LectureResponse>{
+    fun deleteLecture(@PathVariable courseId:Long,@PathVariable lectureId:Long):ResponseEntity<Unit>{
         TODO()
     }
 }

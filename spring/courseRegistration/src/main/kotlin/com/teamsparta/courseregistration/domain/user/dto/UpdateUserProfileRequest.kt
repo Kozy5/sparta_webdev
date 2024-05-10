@@ -1,8 +1,6 @@
 package com.teamsparta.courseregistration.domain.user.dto
 
-data class UserResponse(
-    val id:Long,
+data class UpdateUserProfileRequest(
     val email:String,
     val nickname:String,
-    val role:String
 )
