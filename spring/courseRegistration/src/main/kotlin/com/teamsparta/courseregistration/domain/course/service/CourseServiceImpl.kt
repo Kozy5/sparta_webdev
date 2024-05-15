@@ -3,6 +3,9 @@ package com.teamsparta.courseregistration.domain.course.service
 import com.teamsparta.courseregistration.domain.course.dto.CourseResponse
 import com.teamsparta.courseregistration.domain.course.dto.CreateCourseRequest
 import com.teamsparta.courseregistration.domain.course.dto.UpdateCourseRequest
+import com.teamsparta.courseregistration.domain.course.model.Course
+import com.teamsparta.courseregistration.domain.course.model.toResponse
+import com.teamsparta.courseregistration.domain.course.repository.CourseRepository
 import com.teamsparta.courseregistration.domain.courseapplication.dto.ApplyCourseRequest
 import com.teamsparta.courseregistration.domain.courseapplication.dto.CourseApplicationResponse
 import com.teamsparta.courseregistration.domain.courseapplication.dto.UpdateApplicationStatusRequest
@@ -10,41 +13,42 @@ import com.teamsparta.courseregistration.domain.exception.ModelNotFoundException
 import com.teamsparta.courseregistration.domain.lecture.dto.AddLectureRequest
 import com.teamsparta.courseregistration.domain.lecture.dto.LectureResponse
 import com.teamsparta.courseregistration.domain.lecture.dto.UpdateLectureRequest
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-class CourseServiceImpl:CourseService {
+class CourseServiceImpl(
+    val courseRepository: CourseRepository
+):CourseService {
     override fun getAllCourseList(): List<CourseResponse> {
-     // TODO : DB에서 모든 Course 목록 조회하여  CourseResponse로 변환 후 반환
-        TODO("Not yet implemented")
+        return courseRepository.findAll().map {it.toResponse()}
     }
 
-
     override fun getCourseById(courseId: Long): CourseResponse {
-     // TODO : 만약에 CourseId에 해당하는 Course가 없다면 ModelNotFoundException
-     // TODO : DB에서 하나의 ID에 대응되는 목록 조회하여 CourseResponse로 변환 후 반환
-     // TODO("Not yet implemented")
-        throw ModelNotFoundException(modelName="Course",id = 1L)
+        val course = courseRepository.findByIdOrNull(courseId) ?: throw ModelNotFoundException("course",courseId)
+        return course.toResponse()
     }
 
     @Transactional
     override fun createCourse(request: CreateCourseRequest): CourseResponse {
-     // TODO :새로운 코스 DB에 저장
-        TODO("Not yet implemented")
+        val course = Course(
+            title = request.title,
+            description = request.description
+        )
+        return courseRepository.save(course).toResponse()
     }
     @Transactional
     override fun updateCourse(courseId: Long, request: UpdateCourseRequest): CourseResponse {
-     // TODO : 만약에 CourseId에 해당하는 Course가 없다면 ModelNotFoundException
-     // TODO : DB에서 courseId에해당 하는 코스를 가져와서 request기반으로 변경 내용 DB에 업데이트 후 저장하고, CourseResponse로 변환 후 반환
-
-        TODO("Not yet implemented")
+        val course = courseRepository.findByIdOrNull(courseId) ?: throw ModelNotFoundException("course",courseId)
+        course.title = request.title
+        course.description = request.description
+        return courseRepository.save(course).toResponse()
     }
     @Transactional
     override fun deleteCourse(courseId: Long) {
-     // TODO : 만약에 CourseId에 해당하는 Course가 없다면 ModelNotFoundException
-     // TODO : DB에서 courseId에 해당 하는 코스를 DB에서 삭제
-        TODO("Not yet implemented")
+        val course = courseRepository.findByIdOrNull(courseId) ?: throw ModelNotFoundException("course",courseId)
+        courseRepository.delete(course)
     }
 
     override fun getLectureList(courseId: Long): List<LectureResponse> {

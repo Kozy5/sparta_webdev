@@ -1,5 +1,6 @@
 package com.teamsparta.courseregistration.domain.course.model
 
+import com.teamsparta.courseregistration.domain.course.dto.CourseResponse
 import com.teamsparta.courseregistration.domain.courseapplication.model.CourseApplication
 import com.teamsparta.courseregistration.domain.lecture.model.Lecture
 import jakarta.persistence.*
@@ -11,11 +12,11 @@ class Course(
     var title: String,
 
     @Column(name = "description")
-    var description: String? =null,
+    var description: String? = null,
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    var status: CourseStatus,
+    var status: CourseStatus = CourseStatus.OPEN,
 
     @Column(name = "max_application")
     var maxApplication: Int = 30,
@@ -30,8 +31,18 @@ class Course(
     var courseAppilcation: MutableList<CourseApplication> = mutableListOf()
 
 ){
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
+}
+
+fun Course.toResponse():CourseResponse {
+    return CourseResponse(
+        id = id!!,
+        title = title,
+        description = description,
+        status = status.name,
+        maxApplicants = maxApplication,
+        numApplicants = minApplication
+    )
 }
