@@ -10,7 +10,7 @@ var peerage = document.querySelector("#peerage");
 setInterval(begging, 1000);
 
 var moneyauto = 1;
-var moneycliced = 1000;
+var moneycliced = 1;
 var moneyDefault = 0;
 var intervalValue = 1000;
 
