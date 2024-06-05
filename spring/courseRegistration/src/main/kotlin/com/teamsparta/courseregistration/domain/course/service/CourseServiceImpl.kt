@@ -22,6 +22,7 @@ import com.teamsparta.courseregistration.domain.lecture.model.Lecture
 import com.teamsparta.courseregistration.domain.lecture.model.toResponse
 import com.teamsparta.courseregistration.domain.lecture.repository.LectureRepository
 import com.teamsparta.courseregistration.domain.user.repository.UserRepository
+import com.teamsparta.courseregistration.infra.aop.StopWatch
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -31,8 +32,7 @@ class CourseServiceImpl(
     private val courseRepository: CourseRepository,
     private val lectureRepository: LectureRepository,
     private val userRepository: UserRepository,
-    private val courseApplicationRepository: CourseApplicationRepository,
-    applicationRepository: CourseApplicationRepository
+    private val courseApplicationRepository: CourseApplicationRepository
 ):CourseService {
 
 
@@ -40,6 +40,7 @@ class CourseServiceImpl(
         return courseRepository.findAll().map {it.toResponse()}
     }
 
+    @StopWatch
     override fun getCourseById(courseId: Long): CourseResponse {
         val course = courseRepository.findByIdOrNull(courseId) ?: throw ModelNotFoundException("course",courseId)
         return course.toResponse()
