@@ -38,6 +38,7 @@ class CourseServiceImpl(
         )
         return courseRepository.save(course).toResponse()
     }
+
     @Transactional
     override fun updateCourse(courseId: Long, request: UpdateCourseRequest): CourseResponse {
         val course = courseRepository.findByIdOrNull(courseId) ?: throw ModelNotFoundException("course",courseId)
@@ -45,6 +46,7 @@ class CourseServiceImpl(
         course.description = request.description
         return courseRepository.save(course).toResponse()
     }
+
     @Transactional
     override fun deleteCourse(courseId: Long) {
         val course = courseRepository.findByIdOrNull(courseId) ?: throw ModelNotFoundException("course",courseId)
