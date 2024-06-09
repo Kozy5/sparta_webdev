@@ -8,32 +8,34 @@ import jakarta.persistence.*
 @Entity
 @Table(name = "course")
 class Course(
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
     var title: String,
 
     @Column(name = "description")
     var description: String? = null,
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     var status: CourseStatus = CourseStatus.OPEN,
 
-    @Column(name = "max_application")
+    @Column(name = "max_applicants", nullable = false)
     var maxApplication: Int = 30,
 
-    @Column(name = "min_application")
-    var minApplication: Int = 0,
+    @Column(name = "num_applicants", nullable = false)
+    var numApplication: Int = 0,
 
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = [CascadeType.ALL], orphanRemoval = true)
     var lectures: MutableList<Lecture> = mutableListOf(),
 
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = [CascadeType.ALL], orphanRemoval = true)
-    var courseAppilcation: MutableList<CourseApplication> = mutableListOf()
+    var courseApplications: MutableList<CourseApplication> = mutableListOf()
 
 ){
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
+
 }
 
 fun Course.toResponse():CourseResponse {
@@ -43,6 +45,7 @@ fun Course.toResponse():CourseResponse {
         description = description,
         status = status.name,
         maxApplicants = maxApplication,
-        numApplicants = minApplication
+        numApplicants = numApplication
     )
 }
+

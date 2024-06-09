@@ -1,24 +1,70 @@
 package com.teamsparta.courseregistration.domain.user.service
 
-import com.teamsparta.courseregistration.domain.user.dto.SignUpRequest
-import com.teamsparta.courseregistration.domain.user.dto.UpdateUserProfileRequest
-import com.teamsparta.courseregistration.domain.user.dto.UserResponse
+import com.teamsparta.courseregistration.domain.exception.ModelNotFoundException
+import com.teamsparta.courseregistration.domain.user.dto.*
+import com.teamsparta.courseregistration.domain.user.exception.InvalidCredentialException
+import com.teamsparta.courseregistration.domain.user.model.Profile
+import com.teamsparta.courseregistration.domain.user.model.User
+import com.teamsparta.courseregistration.domain.user.model.UserRole
+import com.teamsparta.courseregistration.domain.user.model.toResponse
+import com.teamsparta.courseregistration.domain.user.repository.UserRepository
+import com.teamsparta.courseregistration.infra.security.jwt.JwtPlugin
 import jakarta.transaction.Transactional
+import org.springframework.data.repository.findByIdOrNull
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 
 @Service
-class UserServiceImpl:UserService {
+class UserServiceImpl(
+    private val userRepository: UserRepository,
+    private val passwordEncoder: PasswordEncoder,
+    private val jwtPlugin: JwtPlugin
+):UserService {
+
+    override fun login(request: LoginRequest): LoginResponse{
+        val user = userRepository.findByEmail(request.email) ?: throw ModelNotFoundException("user", null)
+
+        if(user.role.name != request.role || !passwordEncoder.matches(request.password,user.password)){
+            throw InvalidCredentialException()
+        }
+
+        return LoginResponse(
+            accessToken = jwtPlugin.generateAccessToken(
+                subject = user.id.toString(),
+                email = user.email,
+                role = user.role.name
+            )
+        )
+    }
+
     @Transactional
     override fun signUp(request: SignUpRequest): UserResponse {
-//      TODO : Email이 중복되는지 확인, 중복된다면 throw IllegalStateException
-//      TODO : request를 User를 변환 후 DB에 저장, 비밀번호는 저장시 암호화
-        TODO("Not yet implemented")
+        if(userRepository.existsByEmail(request.email)){
+            throw IllegalStateException("Already exits email : ${request.email}")
+        }
+        return userRepository.save(
+            User(
+            email = request.email,
+            password = passwordEncoder.encode(request.password),
+            profile = Profile(nickname = request.nickname),
+            role = when(request.role){
+                UserRole.STUDENT.name -> UserRole.STUDENT
+                UserRole.TUTOR.name -> UserRole.TUTOR
+                else -> throw IllegalStateException("Invalid rold : $request.role")
+            }
+        )
+        ).toResponse()
     }
     @Transactional
     override fun updateUserProfile(userId: Long, request: UpdateUserProfileRequest): UserResponse {
-//      TODO : 만약 userId에 해당하는 User가 없다면 throw ModelNotFoundException
-//      TODO : DB에서 userId에 해당하는 User를 가져와서  updateUserProfileRequest로 업데이트 후 DB에 저장, 결과를 UserResponse로 변한 후 반환
-        TODO("Not yet implemented")
+        val user = userRepository.findByIdOrNull(userId) ?: throw ModelNotFoundException("user", userId)
+        user.email = request.email
+        user.profile = Profile(
+            nickname = request.nickname,
+        )
+        return userRepository.save(user).toResponse()
     }
 
 }
