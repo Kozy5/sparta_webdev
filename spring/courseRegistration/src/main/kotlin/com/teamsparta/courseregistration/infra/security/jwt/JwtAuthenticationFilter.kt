@@ -4,11 +4,14 @@ import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.http.HttpHeaders
+import org.springframework.security.core.Authentication
+import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource
 import org.springframework.stereotype.Component
 import org.springframework.web.filter.OncePerRequestFilter
 
 @Component
-class JwtAthenticationFilter(
+class JwtAuthenticationFilter(
     private val jwtPlugin: JwtPlugin
 ): OncePerRequestFilter() {
     override fun doFilterInternal(
@@ -24,8 +27,20 @@ class JwtAthenticationFilter(
                     val userId = it.payload.subject.toLong()
                     val role = it.payload.get("role",String::class.java)
                     val email = it.payload.get("email",String::class.java)
+                    val principal = UserPrincipal(
+                        id = userId,
+                        email = email,
+                        roles = setOf(role)
+                    )
+                    val authentication: Authentication = JwtAuthenticationToken(
+                        principal = principal,
+                        details = WebAuthenticationDetailsSource().buildDetails(request)
+                    )
+                    SecurityContextHolder.getContext().authentication = authentication
                 }
         }
+
+        filterChain.doFilter(request, response)
     }
 
     private fun HttpServletRequest.getBearerToken(): String? {
