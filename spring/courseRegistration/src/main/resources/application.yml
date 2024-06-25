@@ -2,14 +2,14 @@ spring:
   datasource:
     url: jdbc:postgresql://aws-0-ap-northeast-2.pooler.supabase.com:5432/postgres
     username: postgres.chwordmqsrvakuarbdlo
-    password: 6BYI12CSJLuO0bIo
+    password: ZSKxuQPBVOVSU4NU
   jpa:
     properties:
       hibernate:
         show_sql: true
         format_sql: true
         highlight_sql: true
-        ddl-auto: validate
+        ddl-auto: create
 logging:
   level:
     org:

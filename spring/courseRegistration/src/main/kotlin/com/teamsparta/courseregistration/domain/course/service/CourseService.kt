@@ -9,9 +9,13 @@ import com.teamsparta.courseregistration.domain.courseapplication.dto.UpdateAppl
 import com.teamsparta.courseregistration.domain.lecture.dto.AddLectureRequest
 import com.teamsparta.courseregistration.domain.lecture.dto.LectureResponse
 import com.teamsparta.courseregistration.domain.lecture.dto.UpdateLectureRequest
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 
 interface CourseService {
-    fun getAllCourseList():List<CourseResponse>
+    fun getAllCourseList(): List<CourseResponse>
+
+    fun searchCourseList(title: String): List<CourseResponse>?
 
     fun getCourseById(courseId:Long):CourseResponse
 
@@ -38,5 +42,8 @@ interface CourseService {
     fun getCourseApplicationList(courseId:Long):List<CourseApplicationResponse>
 
     fun updateCourseApplicationStatus(courseId:Long,applicationId:Long,request:UpdateApplicationStatusRequest):CourseApplicationResponse
+
+    fun getPaginatedCourseList(pageable: Pageable, status: String?): Page<CourseResponse>?
+
 
 }

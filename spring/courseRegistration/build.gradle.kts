@@ -6,6 +6,7 @@ plugins {
 	kotlin("jvm") version "1.9.23"
 	kotlin("plugin.spring") version "1.9.23"
 	kotlin("plugin.noarg") version "1.8.22"
+	kotlin("kapt") version "1.8.22"
 }
 
 group = "com.teamsparta"
@@ -25,7 +26,11 @@ repositories {
 	mavenCentral()
 }
 
+val queryDslVersion = "5.0.0"
 
+val kotestVersion = "5.5.5" 
+
+val mockkVersion = "1.13.8"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
@@ -36,6 +41,14 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-aop")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("io.jsonwebtoken:jjwt-api:0.12.3")
+	implementation("com.querydsl:querydsl-jpa:$queryDslVersion:jakarta")
+
+	testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+	testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
+	testImplementation("io.kotest.extensions:kotest-extensions-spring:1.1.3")
+	testImplementation("io.mockk:mockk:$mockkVersion")
+
+	kapt("com.querydsl:querydsl-apt:$queryDslVersion:jakarta")
 
 
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
@@ -58,12 +71,16 @@ allOpen {
 	annotation("jakarta.persistence.Embeddable")
 }
 
+
+
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs += "-Xjsr305=strict"
 		jvmTarget = "17"
 	}
 }
+
+
 
 tasks.withType<Test> {
 	useJUnitPlatform()
